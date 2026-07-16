@@ -11,7 +11,8 @@ type DataRes = {
   title: string;
   category: string;
   date: Date;
-  viewCount: number | null;
+  viewCount?: number | null;
+  viewRating?: number | null;
   salesCount: number | null;
   revenue: number | null;
   itemCount: number;
@@ -120,113 +121,134 @@ const labangMockData: DataRes[] = [
   },
 ];
 
-const homeShoppingMockData: DataRes[] = [
+const homeShoppingMockData = [
   {
     rank: 1,
     title: "유피토스 피토프로틴 헤어컬러 기본패키지",
     category: "화장품/미용",
     date: new Date("2026-07-16T23:55:00"),
-    viewCount: 510,
-    salesCount: null,
-    revenue: 117000000,
+    viewRating: 5.2,
+    salesCount: 4257,
+    revenue: 166000000,
     itemCount: 5,
   },
   {
     rank: 2,
-    title: "[최초가 259,000원]25FW 헤이즈 퀼팅 다운",
+    title: "25FW 헤이즈 퀼팅 다운",
     category: "패션의류",
-    date: new Date("2026-07-16T23:55:00"),
-    viewCount: 2308,
-    salesCount: null,
-    revenue: 111000000,
+    date: new Date("2026-07-16T22:30:00"),
+    viewRating: 4.8,
+    salesCount: 4057,
+    revenue: 187000000,
     itemCount: 10,
   },
   {
     rank: 3,
-    title: "[자코모] 바스토 3인 럭스 통가죽 천연면피 소가죽 소파+쿠션1개",
-    category: "가구/인테리어",
-    date: new Date("2026-07-16T23:38:00"),
-    viewCount: 29,
-    salesCount: null,
-    revenue: 76910000,
-    itemCount: 7,
+    title: "바디프랜드 마사지체어",
+    category: "생활/건강",
+    date: new Date("2026-07-16T21:00:00"),
+    viewRating: 4.5,
+    salesCount: 832,
+    revenue: 520000000,
+    itemCount: 3,
   },
   {
     rank: 4,
-    title:
-      "[LBL] (런칭가 79,000원)26SS 프렌치린넨 블렌디드 슬리브리스 니트 3종",
-    category: "패션의류",
-    date: new Date("2026-07-16T23:55:00"),
-    viewCount: 1464,
-    salesCount: null,
-    revenue: 65520000,
-    itemCount: 5,
+    title: "LG 오브제컬렉션 냉장고",
+    category: "가전",
+    date: new Date("2026-07-16T20:00:00"),
+    viewRating: 4.1,
+    salesCount: 356,
+    revenue: 430000000,
+    itemCount: 2,
   },
   {
     rank: 5,
-    title: "최신상 하퍼스바자 멜라토닝 글로우크림 본품 1병",
-    category: "화장품/미용",
-    date: new Date("2026-07-16T23:55:00"),
-    viewCount: 448,
-    salesCount: null,
-    revenue: 57240000,
-    itemCount: 3,
+    title: "프리미엄 한우 선물세트",
+    category: "식품",
+    date: new Date("2026-07-16T19:00:00"),
+    viewRating: 3.9,
+    salesCount: 2150,
+    revenue: 129000000,
+    itemCount: 6,
   },
   {
     rank: 6,
-    title: "개국 11주년 특집가! 이가격 최조 [에코로바] 여성 썸머 캐쥬얼화",
-    category: "패션잡화",
-    date: new Date("2026-07-16T23:50:00"),
-    viewCount: 1743,
-    salesCount: null,
-    revenue: 52120000,
-    itemCount: 2,
+    title: "다이슨 에어랩 멀티스타일러",
+    category: "뷰티/가전",
+    date: new Date("2026-07-16T18:00:00"),
+    viewRating: 3.6,
+    salesCount: 1240,
+    revenue: 310000000,
+    itemCount: 4,
   },
   {
     rank: 7,
-    title: "국내산 직화구이 무뼈닭발 8팩",
+    title: "여름 린넨 셔츠 패키지",
     category: "패션의류",
-    date: new Date("2026-07-16T23:32:00"),
-    viewCount: 1289,
-    salesCount: null,
-    revenue: 51430000,
-    itemCount: 2,
+    date: new Date("2026-07-16T17:00:00"),
+    viewRating: 3.2,
+    salesCount: 2980,
+    revenue: 89000000,
+    itemCount: 8,
   },
   {
     rank: 8,
-    title:
-      "(더블/파리여행컬렉션) 라 사본느리 드 니옹 클렌징바 20개+방송에서만 당나귀우유 2개 +쇼핑백 2개",
-    category: "화장품/미용",
-    date: new Date("2026-07-16T23:55:00"),
-    viewCount: 399,
-    salesCount: null,
-    revenue: 44120000,
-    itemCount: 3,
+    title: "정관장 홍삼 건강세트",
+    category: "건강식품",
+    date: new Date("2026-07-16T16:00:00"),
+    viewRating: 2.8,
+    salesCount: 1780,
+    revenue: 76000000,
+    itemCount: 5,
   },
   {
     rank: 9,
-    title:
-      "[뉴질랜드 직수입] 하커허벌 마누카 로젠지 MGO 514+ 10박스+딥클리어샷 2박스",
-    category: "식품",
-    date: new Date("2026-07-16T23:45:00"),
-    viewCount: 223,
-    salesCount: null,
-    revenue: 39260000,
+    title: "삼성 비스포크 식기세척기",
+    category: "가전",
+    date: new Date("2026-07-16T15:00:00"),
+    viewRating: 2.5,
+    salesCount: 420,
+    revenue: 210000000,
     itemCount: 2,
   },
   {
     rank: 10,
-    title: "밤로쉐생율1",
-    category: "식품",
-    date: new Date("2026-07-16T23:42:00"),
-    viewCount: 825,
-    salesCount: null,
-    revenue: 32920000,
-    itemCount: 2,
+    title: "아웃도어 캠핑 패키지",
+    category: "스포츠/레저",
+    date: new Date("2026-07-16T14:00:00"),
+    viewRating: 2.1,
+    salesCount: 950,
+    revenue: 67000000,
+    itemCount: 7,
   },
 ];
 
 const categories: Category[] = ["라방", "홈쇼핑"];
+
+function formatRevenue(revenue: number | null) {
+  if (revenue == null) return "-";
+
+  if (revenue >= 100000000) {
+    return `${(revenue / 100000000).toFixed(2)}억`;
+  }
+
+  return `${(revenue / 10000).toLocaleString()}만`;
+}
+
+function formatDate(date: Date) {
+  const result = date.toLocaleString("ko-KR", {
+    year: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  return result.replaceAll(". ", ".");
+}
 
 function App() {
   const [toggle, setToggle] = useState<Category>("라방");
@@ -281,7 +303,11 @@ function App() {
             <th className="p-3 text-left">방송정보</th>
             <th className="p-3 text-left">분류</th>
             <th className="p-3 text-left">방송시간</th>
-            <th className="p-3 text-left">조회수</th>
+
+            <th className="p-3 text-left">
+              {toggle == "라방" ? "조회수" : "시청률"}
+            </th>
+
             <th className="p-3 text-left">판매량</th>
             <th className="p-3 text-left">매출액</th>
             <th className="p-3 text-left">상품수</th>
@@ -295,11 +321,19 @@ function App() {
                 <div className=" w-100 truncate"> {product.title}</div>
               </td>
               <td className="p-3">{product.category}</td>
-              <td className="p-3">{product.date.toLocaleString()}</td>
-              <td className="p-3">{product.viewCount}</td>
-              <td className="p-3">{product.salesCount}</td>
-              <td className="p-3">{product.revenue}</td>
-              <td className="p-3">{product.itemCount}</td>
+              <td className="p-3">{formatDate(product.date)}</td>
+              <td className="p-3">
+                {toggle === "라방"
+                  ? (product.viewCount ?? "-")
+                  : product.viewRating != null
+                    ? `${product.viewRating}%`
+                    : "-"}
+              </td>
+              <td className="p-3">
+                {product.salesCount?.toLocaleString() ?? "-"}
+              </td>
+              <td className="p-3">{formatRevenue(product.revenue)}</td>
+              <td className="p-3">{product.itemCount ?? "-"}</td>
             </tr>
           ))}
         </tbody>
