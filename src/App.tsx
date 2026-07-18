@@ -295,9 +295,12 @@ type Broadcast = {
   salesAmount: string;
   itemCount: string;
   href: string;
+  categoryHref: string;
 };
 
 const broadcastCategories: BroadcastCategory[] = ["라방", "홈쇼핑"];
+
+const DOMAIN = "https://live.ecomm-data.com/";
 
 function App() {
   const [selectedBroadcast, setSelectedBroadcast] =
@@ -369,10 +372,16 @@ function App() {
             <tr className="border-b" key={i}>
               <td className="p-3">{broadcast.rank}</td>
               <td className="p-3 ">
-                <div className=" w-100 truncate">{broadcast.title}</div>
+                <div className=" w-100 truncate">
+                  <a href={DOMAIN + broadcast.href}>{broadcast.title}</a>
+                </div>
                 <div className="text-gray-500">{broadcast.platform}</div>
               </td>
-              <td className="p-3">{broadcast.category}</td>
+              <td className="p-3">
+                <a href={DOMAIN + broadcast.categoryHref}>
+                  {broadcast.category}
+                </a>
+              </td>
               <td className="p-3">
                 <div>{broadcast.date}</div>
                 <div className="text-gray-500 text-center">
