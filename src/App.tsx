@@ -4,7 +4,14 @@ import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
 
-type Category = "라방" | "홈쇼핑";
+type BroadcastCategory = "라방" | "홈쇼핑";
+
+/*
+export type ProductCategory = {
+  cid: number;
+  cat_name: string;
+};
+
 
 type DataRes = {
   rank: number;
@@ -17,7 +24,41 @@ type DataRes = {
   revenue: number | null;
   itemCount: number;
 };
+*/
+/*
+type ProductRes = {
+  list: LabangProduct[] | HomeShoppingProduct[];
+  mask: boolean;
+};
 
+type LabangProduct = {
+  objectID: string;
+  platform_id: string;
+  datetime_start: string;
+  product_cnt: number;
+  visit_cnt: number;
+  sales_cnt: number | null;
+  sales_amt: number | null;
+  title: string;
+  cid: number;
+};
+
+type HomeShoppingProduct = {
+  hsshow_id: string;
+  platform_id: string;
+  platform_name: string;
+  hsshow_title: string;
+  hsshow_datetime_start: string;
+  hsshow_datetime_end: string;
+  hsshow_url_live: string | null;
+  item_cnt: number;
+  cid: number;
+  sales_cnt: number | null;
+  sales_amt: number | null;
+  cat: ProductCategory;
+};
+
+/*
 const labangMockData: DataRes[] = [
   {
     rank: 1,
@@ -224,70 +265,82 @@ const homeShoppingMockData = [
   },
 ];
 
-const categories: Category[] = ["라방", "홈쇼핑"];
 
-function formatRevenue(revenue: number | null) {
-  if (revenue == null) return "-";
+export type Product = {
+  rank: string;
+  title: string;
+  platform: string;
+  category: string;
+  date: string;
+  time: string;
+  viewCount: string;
+  salesCount: string;
+  salesAmount: string;
+  itemCount: string;
+  href: string;
+};
+*/
 
-  if (revenue >= 100000000) {
-    return `${(revenue / 100000000).toFixed(2)}억`;
-  }
+//라방바 데이터랩 API 사용하는 방식은 아에 다른 페이지로 분리하자
+type Broadcast = {
+  rank: string;
+  title: string;
+  platform: string;
+  category: string;
+  date: string;
+  time: string;
+  viewCount?: string;
+  viewRating?: string;
+  salesCount: string;
+  salesAmount: string;
+  itemCount: string;
+  href: string;
+};
 
-  return `${(revenue / 10000).toLocaleString()}만`;
-}
-
-function formatDate(date: Date) {
-  const result = date.toLocaleString("ko-KR", {
-    year: "2-digit",
-    month: "2-digit",
-    day: "2-digit",
-    weekday: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
-
-  return result.replaceAll(". ", ".");
-}
+const broadcastCategories: BroadcastCategory[] = ["라방", "홈쇼핑"];
 
 function App() {
-  const [toggle, setToggle] = useState<Category>("라방");
-  const [products, setProducts] = useState<DataRes[]>([]);
+  const [selectedBroadcast, setSelectedBroadcast] =
+    useState<BroadcastCategory>("라방");
+  const [broadcasts, setBroadcasts] = useState<Broadcast[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (toggle == "라방") setProducts(labangMockData);
-        else setProducts(homeShoppingMockData);
-
-        return;
-
-        const response = await fetch("https://example.com/api/products");
+        const url = `http://localhost:3000/api/products?category=${selectedBroadcast}`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
         if (!response.ok) {
-          throw new Error("API 호출 실패");
+          throw new Error("EXPRESS API 호출 실패");
         }
 
-        const dataRes: DataRes[] = await response.json();
-        setProducts(dataRes);
+        const dataRes: Broadcast[] = await response.json();
+
+        setBroadcasts(dataRes);
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchData();
-  }, [toggle]);
+  }, [selectedBroadcast]);
 
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center">
       <nav className="flex gap-1">
-        {categories.map((category, i) => (
+        {broadcastCategories.map((category, i) => (
           <button
             onClick={() => {
-              setToggle(category);
+              setSelectedBroadcast(category);
             }}
             className={`border-2 p-1 ${
-              toggle === category && "bg-yellow-200 border-yellow-400"
+              selectedBroadcast === category &&
+              "bg-yellow-200 border-yellow-400"
             }`}
             key={i}
           >
@@ -305,7 +358,7 @@ function App() {
             <th className="p-3 text-left">방송시간</th>
 
             <th className="p-3 text-left">
-              {toggle == "라방" ? "조회수" : "시청률"}
+              {selectedBroadcast == "라방" ? "조회수" : "시청률"}
             </th>
 
             <th className="p-3 text-left">판매량</th>
@@ -314,26 +367,30 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {products.map((product, i) => (
-            <tr className="border-b">
-              <td className="p-3">{product.rank}</td>
+          {broadcasts.map((broadcast, i) => (
+            <tr className="border-b" key={i}>
+              <td className="p-3">{i + 1}</td>
               <td className="p-3 ">
-                <div className=" w-100 truncate"> {product.title}</div>
+                <div className=" w-100 truncate">{broadcast.title}</div>
+                <div className="text-gray-500">{broadcast.platform}</div>
               </td>
-              <td className="p-3">{product.category}</td>
-              <td className="p-3">{formatDate(product.date)}</td>
+              <td className="p-3">{broadcast.category}</td>
               <td className="p-3">
-                {toggle === "라방"
-                  ? (product.viewCount ?? "-")
-                  : product.viewRating != null
-                    ? `${product.viewRating}%`
-                    : "-"}
+                <div>{broadcast.date}</div>
+                <div className="text-gray-500 text-center">
+                  {broadcast.time}
+                </div>
               </td>
               <td className="p-3">
-                {product.salesCount?.toLocaleString() ?? "-"}
+                {selectedBroadcast === "라방"
+                  ? (broadcast.viewCount ?? "-")
+                  : !isNaN(Number(broadcast.viewRating))
+                    ? `${broadcast.viewRating}%`
+                    : (broadcast.viewRating ?? "-")}
               </td>
-              <td className="p-3">{formatRevenue(product.revenue)}</td>
-              <td className="p-3">{product.itemCount ?? "-"}</td>
+              <td className="p-3">{broadcast.salesCount}</td>
+              <td className="p-3">{broadcast.salesAmount}</td>
+              <td className="p-3">{broadcast.itemCount ?? "-"}</td>
             </tr>
           ))}
         </tbody>
