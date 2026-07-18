@@ -307,7 +307,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:3000/api/products?category=${selectedBroadcast}`;
+        const url = `http://localhost:3000/api/broadcasts?category=${selectedBroadcast}`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
@@ -356,11 +356,9 @@ function App() {
             <th className="p-3 text-left">방송정보</th>
             <th className="p-3 text-left">분류</th>
             <th className="p-3 text-left">방송시간</th>
-
             <th className="p-3 text-left">
               {selectedBroadcast == "라방" ? "조회수" : "시청률"}
             </th>
-
             <th className="p-3 text-left">판매량</th>
             <th className="p-3 text-left">매출액</th>
             <th className="p-3 text-left">상품수</th>
@@ -369,7 +367,7 @@ function App() {
         <tbody>
           {broadcasts.map((broadcast, i) => (
             <tr className="border-b" key={i}>
-              <td className="p-3">{i + 1}</td>
+              <td className="p-3">{broadcast.rank}</td>
               <td className="p-3 ">
                 <div className=" w-100 truncate">{broadcast.title}</div>
                 <div className="text-gray-500">{broadcast.platform}</div>
