@@ -48,7 +48,8 @@
 홈쇼핑 데이터를 크롤링하려면 버튼을 클릭해야한다
 * 그래서 cheerio → playwright로 변경
 * getByRole('button', { name: '홈쇼핑' }).click()으로 클릭 자동화
-* locator('.TableHsshow-module...').first().waitFor()로 값이 바뀌는걸 대기 후 크롤링
+* locator('.TableHsshow-module...').first().waitFor()로 값이 바뀌는 걸 대기 후 크롤링
+* 라방 데이터의 경우도 카테고리 값이 렌더링되는 걸 대기 후 크롤링
   
 통신 이슈
 * 프론트, 백엔드가 분리돼있으므로 express에 cors 설정 추가
