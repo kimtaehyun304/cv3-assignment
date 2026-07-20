@@ -1,7 +1,8 @@
 # cv3 기술 과제
 
-[프론트] react 19, typeScript 6, tailwind 4, vite  
-[백엔드] express 5, typeScript 6, playwright-chromium, node-cron
+* [프론트] react 19, typeScript 6, tailwind 4, vite
+* [백엔드] express 5, typeScript 6, playwright-chromium, node-cron
+* [노드 버전] v22.23.1
 
 ### 서비스 링크
 * https://kth-cv3.netlify.app/  
@@ -16,7 +17,7 @@
 2. npm run dev 
 
 프론트, 백엔드 실행 방식 동일합니다.  
-정상 동작하지만, 심사 편의를 위해 배포했습니다.
+직접 실행해도 동작하지만, 심사 편의를 위해 배포했습니다.
 
 ## 구조
 
