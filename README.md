@@ -13,11 +13,15 @@
 * https://github.com/kimtaehyun304/cv3-backend
 
 ### 실행 방법
-1. npm install
-2. npm run dev 
+1. download ZIP 이후 압축해재
+2. VSCODE에서 압축해재한 폴더로 이동
+3. VSCODE 터미널에서 아래 명령어 입력
+4. npm install
+5. npm run dev
 
 프론트, 백엔드 실행 방식 동일합니다.  
 직접 실행해도 동작하지만, 심사 편의를 위해 배포했습니다.
+
 
 ## 구조
 
@@ -76,6 +80,3 @@
 공고에 크롤링 경험 우대라고 적혀 있어서 크롤링 결정
 * 원래는 라방바 assignment API 사용하는 페이지도 만들라 했는데, 위의 이유로 포기
 * 라방바 robots.txt 확인해보니, 크롤링 쓰라는 의도라고 판단
-
-
-
