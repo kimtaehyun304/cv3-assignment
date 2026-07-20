@@ -83,4 +83,4 @@
 * 라방바 robots.txt 확인해보니, 크롤링 쓰라는 의도라고 판단
 
 ### 프론트 화면 캡쳐
-<img width="915" height="758" alt="Image" src="https://github.com/user-attachments/assets/13bbe78c-e508-4511-89a5-2ed6ea986a4d" />
+<img width="1063" height="829" alt="Image" src="https://github.com/user-attachments/assets/62976166-5baa-462f-a2d8-6d56354689ab" />
