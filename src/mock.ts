@@ -1,5 +1,6 @@
-import type { DataRes } from "./type";
 /*
+import type { DataRes } from "./type";
+
 const labangMockData: DataRes[] = [
   {
     rank: 1,
