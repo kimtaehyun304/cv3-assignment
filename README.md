@@ -1,32 +1,13 @@
-# React + TypeScript + Vite
+# cv3 기술 과제
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[프론트] react 19, typeScript 6, tailwind 4, vite  
+[백엔드] express 5, typeScript 6, playwright-chromium, node-cron
 
-Currently, two official plugins are available:
+### 서비스 링크
+* https://kth-cv3.netlify.app/  
+* http://15.165.194.220/api/broadcasts?category=라방
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 깃허브 링크
+* https://github.com/kimtaehyun304/cv3-assignment
+* https://github.com/kimtaehyun304/cv3-backend
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
