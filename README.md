@@ -11,3 +11,48 @@
 * https://github.com/kimtaehyun304/cv3-assignment
 * https://github.com/kimtaehyun304/cv3-backend
 
+### 실행 방법
+1. npm install
+2. npm run dev 
+
+프론트, 백엔드 실행 방식 동일합니다.  
+정상 동작하지만, 심사 편의를 위해 배포했습니다.
+
+## 구조
+
+#### 프론트
+* App.tsx에서 테이블 렌더링 및 express API 호출
+
+#### 백엔드
+* broadcastController.ts, apiRouter.ts로 라우팅
+* scheduler.ts에서 1분 주기로 과제 페이지 크롤링하고 캐싱
+* main.ts, server.ts에서 서버 시작시 최초 크롤링
+* productType.ts으로 크롤링 데이터 타입 지정
+* cicd.yml (깃허브 액션으로 배포 자동화)
+
+## 개발 과정
+
+### 이슈 해결
+크롤링 중 메모리 부하가 발생하여 ec2가 멈추었다
+* 최소한의 리소스만 크롤링 (이미지, 폰트 등 차단)
+* 불필요한 옵션 해재 (gpu, extexsion 등)
+* domcontentloaded 변경 및 타임아웃 늘리기
+
+홈쇼핑 데이터를 크롤링하려면 버튼을 클릭해야한다
+* 그래서 cheerio → playwright로 변경
+* getByRole('button', { name: '홈쇼핑' }).click()으로 클릭 자동화
+* locator('.TableHsshow-module...').first().waitFor()로 값이 바뀌는걸 대기 후 크롤링
+  
+통신 이슈
+* 프론트, 백엔드가 분리돼있으므로 express에 cors 설정 추가
+* 네트리파이가 https라, http인 express를 호출하지 못해서, 네트리파이가 제공하는 프록시 서버(https) 사용
+
+### 코드 개선
+라방, 홈쇼핑 타입 개선
+* 라방바의 assignment API를 호출하는 방식일 땐, 타입이 많이 달라서 타입을 두 개 사용
+* 크롤링 방식으로 변경하니 viewCount와 viewRating만 달라서, 타입을 두 개 만들지 않고 ? 옵션 사용
+
+
+  
+
+
