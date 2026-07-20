@@ -38,6 +38,7 @@
 * 최소한의 리소스만 크롤링 (이미지, 폰트 등 차단)
 * 불필요한 옵션 해재 (gpu, extexsion 등)
 * domcontentloaded 변경 및 타임아웃 늘리기
+* 크롤링 끝나면 broswer.close()
 
 홈쇼핑 데이터를 크롤링하려면 버튼을 클릭해야한다
 * 그래서 cheerio → playwright로 변경
