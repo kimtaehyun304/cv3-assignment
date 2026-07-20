@@ -1,5 +1,5 @@
 import type { DataRes } from "./type";
-
+/*
 const labangMockData: DataRes[] = [
   {
     rank: 1,
@@ -205,3 +205,4 @@ const homeShoppingMockData = [
     itemCount: 7,
   },
 ];
+*/
