@@ -18,7 +18,7 @@ function App() {
         //const url = `http://localhost:8080/api/broadcasts?category=${selectedBroadcast}`;
 
         //netlify 배포하면 https인데 express 서버가 http라서 api 호출시 에러 발생
-        //netlift 프록시 기능으로 (로컬에서 npm start하면 netlfiy 프록시 안되니 주의)
+        //netlify 프록시 기능으로 해결
         const url = import.meta.env.DEV
           ? `http://15.165.194.220/api/broadcasts?category=${selectedBroadcast}`
           : `/api/broadcasts?category=${selectedBroadcast}`;
