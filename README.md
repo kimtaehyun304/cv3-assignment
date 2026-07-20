@@ -38,6 +38,14 @@
 
 ## 개발 과정
 
+### 기술 선택 근거
+공고에 react, express가 있어서 해당 기술로 결정
+* 라방바 사이트가 next.js로 돼있어서, next.js 써도 상관 없었을 것 같다
+
+공고에 크롤링 경험 우대라고 적혀 있어서 크롤링 결정
+* 원래는 라방바 assignment API 사용하는 페이지도 만들라 했는데, 위의 이유로 포기
+* 라방바 robots.txt 확인해보니, 크롤링 쓰라는 의도라고 판단
+
 ### 이슈 해결
 크롤링 중 메모리 부하가 발생하여 ec2가 멈추었다
 * 최소한의 리소스만 크롤링 (이미지, 폰트 등 차단)
@@ -74,14 +82,6 @@
 * tsconfig.prod.json 수정(lib, rootDir, baseUrl)
 * 파라미터, 변수 타입 지정
 * tsc-alias 패키지 추가
-
-### 기술 선택 근거
-공고에 react, express가 있어서 해당 기술로 결정
-* 라방바 사이트가 next.js로 돼있어서, next.js 써도 상관 없었을 것 같다
-
-공고에 크롤링 경험 우대라고 적혀 있어서 크롤링 결정
-* 원래는 라방바 assignment API 사용하는 페이지도 만들라 했는데, 위의 이유로 포기
-* 라방바 robots.txt 확인해보니, 크롤링 쓰라는 의도라고 판단
-
+* 
 ### 프론트 화면 캡쳐
 <img width="1063" height="829" alt="Image" src="https://github.com/user-attachments/assets/62976166-5baa-462f-a2d8-6d56354689ab" />
