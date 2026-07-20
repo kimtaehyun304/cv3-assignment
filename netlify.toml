@@ -1,4 +1,10 @@
 [[redirects]]
-from = "/*"
+from = "/api/*"
 to = "http://15.165.194.220/api/:splat"
+status = 200
+
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
 status = 200

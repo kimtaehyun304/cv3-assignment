@@ -308,7 +308,12 @@ function App() {
     const fetchData = async () => {
       try {
         //const url = `http://localhost:8080/api/broadcasts?category=${selectedBroadcast}`;
-        const url = `http://15.165.194.220/api/broadcasts?category=${selectedBroadcast}`;
+
+        //const url = `http://15.165.194.220/api/broadcasts?category=${selectedBroadcast}`;
+
+        //netlify 배포하니 https에서 http 호출 불가하여 netlify proxy 이용
+        const url = `/api/broadcasts?category=${selectedBroadcast}`;
+
         const response = await fetch(url, {
           method: "GET",
           headers: {
