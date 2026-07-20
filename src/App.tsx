@@ -310,7 +310,8 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:3000/api/broadcasts?category=${selectedBroadcast}`;
+        //const url = `http://localhost:8080/api/broadcasts?category=${selectedBroadcast}`;
+        const url = `http://15.165.194.220/api/broadcasts?category=${selectedBroadcast}`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
