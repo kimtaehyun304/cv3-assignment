@@ -81,3 +81,6 @@
 공고에 크롤링 경험 우대라고 적혀 있어서 크롤링 결정
 * 원래는 라방바 assignment API 사용하는 페이지도 만들라 했는데, 위의 이유로 포기
 * 라방바 robots.txt 확인해보니, 크롤링 쓰라는 의도라고 판단
+
+### 프론트 화면 캡쳐
+<img width="915" height="758" alt="Image" src="https://github.com/user-attachments/assets/13bbe78c-e508-4511-89a5-2ed6ea986a4d" />
