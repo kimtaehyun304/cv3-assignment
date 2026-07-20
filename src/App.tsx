@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import type { Broadcast, BroadcastCategory } from "./type";
 
-
 const broadcastCategories: BroadcastCategory[] = ["라방", "홈쇼핑"];
 
 const DOMAIN = "https://live.ecomm-data.com/";
@@ -15,12 +14,14 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //express를 로컬에서 실행할 경우
         //const url = `http://localhost:8080/api/broadcasts?category=${selectedBroadcast}`;
 
-        //const url = `http://15.165.194.220/api/broadcasts?category=${selectedBroadcast}`;
-
-        //netlify 배포하니 https에서 http 호출 불가하여 netlify proxy 이용
-        const url = `/api/broadcasts?category=${selectedBroadcast}`;
+        //netlify 배포하면 https인데 express 서버가 http라서 api 호출시 에러 발생
+        //netlift 프록시 기능으로 (로컬에서 npm start하면 netlfiy 프록시 안되니 주의)
+        const url = import.meta.env.DEV
+          ? `http://15.165.194.220/api/broadcasts?category=${selectedBroadcast}`
+          : `/api/broadcasts?category=${selectedBroadcast}`;
 
         const response = await fetch(url, {
           method: "GET",
